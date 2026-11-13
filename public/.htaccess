@@ -29,5 +29,7 @@
     AddType application/geo+json .geojson
 </IfModule>
 <IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE application/geo+json application/json text/html text/css text/javascript application/javascript image/svg+xml
+    <IfModule mod_filter.c>
+        AddOutputFilterByType DEFLATE application/geo+json application/json text/html text/css text/javascript application/javascript image/svg+xml
+    </IfModule>
 </IfModule>
