@@ -23,3 +23,11 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+# Compress the map data, scripts and styles (the zoning and hazard GeoJSON shrink about 6x)
+<IfModule mod_mime.c>
+    AddType application/geo+json .geojson
+</IfModule>
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE application/geo+json application/json text/html text/css text/javascript application/javascript image/svg+xml
+</IfModule>

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useMap } from '../../components/ui/map';
-import { ZONING_LEGEND, BARANGAY_COORDS, fetchSuitabilitySummary, normalizeName } from './data.js';
+import { ZONING_LEGEND, BARANGAY_COORDS, fetchSuitabilitySummary, loadBarangayBoundaries, normalizeName } from './data.js';
 
 // ── Legends (also used by the map layers' paint) ───────────────────────────────
 
@@ -61,7 +61,19 @@ function hexToRgb(hex) {
   return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
 }
 
+// Colour and direction of every hatch made so far, so a style swap that drops them can redraw them
+const hatches = new Map();
+const mapsRedrawingHatches = new WeakSet();
+
 function ensureHatch(map, name, hex, reverse) {
+  hatches.set(name, { hex, reverse });
+  if (!mapsRedrawingHatches.has(map)) {
+    mapsRedrawingHatches.add(map);
+    map.on('styleimagemissing', e => {
+      const hatch = hatches.get(e.id);
+      if (hatch) ensureHatch(map, e.id, hatch.hex, hatch.reverse);
+    });
+  }
   if (map.hasImage(name)) return;
   const size = 12;
   const [r, g, b] = hexToRgb(hex);
@@ -82,21 +94,28 @@ const hatchName = (prefix, val) => `hatch-${prefix}-${val.toLowerCase().replace(
 
 /**
  * Adds a GeoJSON source with a fill and a line layer, keeping visibility, filter and paint in sync.
- * Visibility and filter are applied when the layers are created, so a layer that is off at
- * startup stays off when its data arrives.
+ * A layer downloads nothing until it is first shown (the hazard files are large), and a shown
+ * layer starts its download before the map is ready. Visibility and filter are applied when the
+ * layers are created, so a layer hidden while its data arrives stays hidden.
  */
 function useOverlay({ id, load, loadKey = '', visible, filter = null, fill, line, beforeAdd }) {
   const ctx = useMap();
   const map = ctx?.map;
-  // True once the map has loaded and its style is processed; goes false→true again after a
-  // style swap (light/dark theme), which removes custom layers, so they are re-added below.
+  // True once the map has loaded and its style is processed; goes false→true again if the style
+  // is ever swapped, which removes custom layers, so they are re-added below.
   const ready = !!ctx?.isLoaded;
   const latest = useRef({});
   latest.current = { visible, filter, fill, line };
   const loaded = useRef({ key: null, data: null });
+  const wanted = visible || loaded.current.data !== null;
+
+  // Start the download while the map is still loading (loads are cached, so this is fetched once)
+  useEffect(() => {
+    if (visible) load().catch(() => {});
+  }, [visible, loadKey]);
 
   useEffect(() => {
-    if (!map || !ready) return;
+    if (!map || !ready || !wanted) return;
     let active = true;
 
     const show = (data, key) => {
@@ -131,7 +150,7 @@ function useOverlay({ id, load, loadKey = '', visible, filter = null, fill, line
       .catch(e => console.warn(`${id} data error`, e));
 
     return () => { active = false; };
-  }, [map, ready, loadKey]);
+  }, [map, ready, loadKey, wanted]);
 
   useEffect(() => {
     if (!map || !ready) return;
@@ -162,7 +181,10 @@ function useOverlay({ id, load, loadKey = '', visible, filter = null, fill, line
   }, [map, ready, paintKey]);
 }
 
-// GeoJSON downloads are shared and kept for the session, so returning to the map is instant
+// GeoJSON downloads are shared and kept for the session, so returning to the map is instant.
+// The *_map.geojson files are display copies of the zoning and hazard layers in public/data:
+// same polygons, coordinates rounded to 6 decimals (about 0.1 m) and only the property the
+// map reads (zone or hazard), about a quarter smaller. The full files stay the source data.
 const jsonCache = new Map();
 const loadJson = url => () => {
   if (!jsonCache.has(url)) {
@@ -184,7 +206,7 @@ const inFilter = (property, all, hidden, valueOf) => {
 export function ZoningLayer({ visible, hiddenZones, faded }) {
   useOverlay({
     id: 'zoning',
-    load: loadJson('/data/zoning_2020.geojson'),
+    load: loadJson('/data/zoning_2020_map.geojson'),
     visible,
     filter: inFilter('zone', ZONING_LEGEND, hiddenZones, z => z.id),
     fill: { 'fill-color': ZONING_COLOR, 'fill-opacity': faded ? 0.18 : 0.5 },
@@ -196,7 +218,7 @@ export function ZoningLayer({ visible, hiddenZones, faded }) {
 export function FloodLayer({ visible, hiddenFlood }) {
   useOverlay({
     id: 'flood',
-    load: loadJson('/data/flood_hazard_2020.geojson'),
+    load: loadJson('/data/flood_hazard_2020_map.geojson'),
     visible,
     filter: inFilter('hazard', FLOOD_LEGEND, hiddenFlood, l => l.val),
     beforeAdd: map => FLOOD_LEGEND.forEach(l => ensureHatch(map, hatchName('flood', l.val), l.hex, false)),
@@ -209,7 +231,7 @@ export function FloodLayer({ visible, hiddenFlood }) {
 export function LandslideLayer({ visible, hiddenLandslide }) {
   useOverlay({
     id: 'landslide',
-    load: loadJson('/data/landslide_hazard_2020.geojson'),
+    load: loadJson('/data/landslide_hazard_2020_map.geojson'),
     visible,
     filter: inFilter('hazard', LANDSLIDE_LEGEND, hiddenLandslide, l => l.val),
     beforeAdd: map => LANDSLIDE_LEGEND.forEach(l => ensureHatch(map, hatchName('landslide', l.val), l.hex, true)),
@@ -224,7 +246,7 @@ export function SuitabilityLayer({ visible, use, hiddenLevels }) {
   useOverlay({
     id: 'suitability',
     loadKey: use,
-    load: () => Promise.all([loadJson('/data/panabo_barangays.geojson')(), fetchSuitabilitySummary()])
+    load: () => Promise.all([loadBarangayBoundaries(), fetchSuitabilitySummary()])
       .then(([boundaries, summary]) => {
         const byName = Object.fromEntries(summary.map(z => [normalizeName(z.unit_name), z]));
         return {
@@ -251,7 +273,7 @@ export function QueryBarangayLayer({ names }) {
   const keys = names.map(normalizeName);
   useOverlay({
     id: 'query',
-    load: () => loadJson('/data/panabo_barangays.geojson')().then(boundaries => ({
+    load: () => loadBarangayBoundaries().then(boundaries => ({
       type: 'FeatureCollection',
       features: boundaries.features.map(f => ({ ...f, properties: { ...f.properties, key: normalizeName(f.properties.name) } })),
     })),
@@ -308,7 +330,7 @@ export function BarangayLabelLayer({ visible, only = null }) {
       }
     } catch (e) { console.warn('barangay label error', e); }
 
-    loadJson('/data/panabo_barangays.geojson')()
+    loadBarangayBoundaries()
       .then(boundaries => {
         if (!active || map.getSource(BOUNDARY_LAYER_ID)) return;
         map.addSource(BOUNDARY_LAYER_ID, {

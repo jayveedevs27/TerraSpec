@@ -41,7 +41,7 @@ function getSystemTheme(): Theme {
     : "light";
 }
 
-function useResolvedTheme(themeProp?: "light" | "dark"): Theme {
+export function useResolvedTheme(themeProp?: "light" | "dark"): Theme {
   const [detectedTheme, setDetectedTheme] = useState<Theme>(
     () => getDocumentTheme() ?? getSystemTheme(),
   );
@@ -308,7 +308,27 @@ const Map = forwardRef<MapRef, MapProps>(function Map(
     currentStyleRef.current = newStyle;
     setIsStyleLoaded(false);
 
-    mapInstance.setStyle(newStyle, { diff: true });
+    // GeoJSON sources and their layers are the app's own overlays (base map styles use vector or
+    // raster sources): carry them into the new style so a theme or basemap swap never drops them
+    mapInstance.setStyle(newStyle, {
+      diff: true,
+      transformStyle: (previous, next) => {
+        if (!previous) return next;
+        const kept = Object.fromEntries(
+          Object.entries(previous.sources).filter(
+            ([id, source]) => source.type === "geojson" && !(id in next.sources),
+          ),
+        );
+        const keptLayers = previous.layers.filter(
+          (layer) => "source" in layer && typeof layer.source === "string" && layer.source in kept,
+        );
+        return {
+          ...next,
+          sources: { ...next.sources, ...kept },
+          layers: [...next.layers, ...keptLayers],
+        };
+      },
+    });
   }, [mapInstance, resolvedTheme, mapStyles, clearStyleTimeout]);
 
   const contextValue = useMemo(

@@ -190,7 +190,7 @@ export function LandingPage({ go }) {
         <nav className="lp-nav">
           <div className="lp-shell lp-nav-inner">
             <div className="lp-brand">
-              <img src="/favicon.png" alt="TerraSpec" style={{ width: 26, height: 26, borderRadius: 7, objectFit: 'cover', flexShrink: 0 }}/>
+              <img src="/favicon-64.png" alt="TerraSpec" style={{ width: 26, height: 26, borderRadius: 7, objectFit: 'cover', flexShrink: 0 }}/>
               <span>TERRASPEC</span>
               <span style={{ fontFamily: "'Geist Mono', monospace", fontSize: 11, color: 'hsl(240 6% 55%)', marginLeft: 6, borderLeft: '1px solid hsl(240 6% 85%)', paddingLeft: 10 }}></span>
             </div>
@@ -421,7 +421,7 @@ export function LandingPage({ go }) {
             <div className="lp-footer-grid">
               <div>
                 <div className="lp-brand" style={{ marginBottom: 14 }}>
-                  <img src="/favicon.png" alt="TerraSpec" style={{ width: 26, height: 26, borderRadius: 7, objectFit: 'cover', flexShrink: 0 }}/>
+                  <img src="/favicon-64.png" alt="TerraSpec" style={{ width: 26, height: 26, borderRadius: 7, objectFit: 'cover', flexShrink: 0 }}/>
                   <span>TERRASPEC</span>
                 </div>
                 <p className="lp-footer-cap">A Geospatial Decision Support System for Multi-Sectoral Land Suitability Optimization and Spatial Analytics. In partial fulfillment of the BS Information Technology degree.</p>
