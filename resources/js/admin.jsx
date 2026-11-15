@@ -615,8 +615,8 @@ export function AdminScreen({ staffRole }) {
         </Card>
       )}
 
-      {/* ── GENERIC TABLE ── */}
-      {tab !== 'criteria' && (
+      {/* ── GENERIC TABLE ── only for tabs with a table config (not the AHP Matrix or AHP Weights) */}
+      {cfg && (
         <Card>
           <CardHeader>
             <div className="row-between">
