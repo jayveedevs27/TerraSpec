@@ -216,6 +216,8 @@ function App() {
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', dark);
+    // The map reads the theme from these classes; without "light" it would follow the OS setting
+    document.documentElement.classList.toggle('light', !dark);
   }, [dark]);
 
   const sections = [...new Set(NAV.map(n => n.section))];

@@ -2,56 +2,64 @@ import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { getJson } from './http.js';
 import {
   Map, MapControls, MapMarker, MarkerContent,
-  MapPopup, MarkerTooltip, useMap,
+  MapPopup, MarkerTooltip, useMap, useResolvedTheme,
 } from '../../components/ui/map';
 import { PANABO, BARANGAY_COORDS, ZONING_LEGEND, fetchSuitabilitySummary, findBarangayAt } from './data.js';
 import {
   ZoningLayer, FloodLayer, LandslideLayer, SuitabilityLayer, QueryBarangayLayer, BarangayLabelLayer, MangroveSitesLayer, MANGROVE_LEGEND,
-  FLOOD_LEGEND, LANDSLIDE_LEGEND, SUITABILITY_LEGEND, SUITABILITY_USES, MAP_VIEWS, OVERLAY_LAYER_IDS, hatchSwatch,
+  FLOOD_LEGEND, LANDSLIDE_LEGEND, SUITABILITY_LEGEND, SUITABILITY_USES, MAP_VIEWS, hatchSwatch,
 } from './map-layers.jsx';
 import { Icon, Card, CardHeader, CardBody, Badge, levelStyle } from './components.jsx';
 import { ZoningQueryPanel, ZONING_QUERY_PRESETS, EMPTY_QUERY, runZoningQuery, barangayBounds } from './zoning-query.jsx';
 import { AskTheMap } from './ask-the-map.jsx';
 
-// Raster basemaps drawn under the TerraSpec layers. "carto" shows the default vector style only.
+// Basemaps drawn under the TerraSpec layers. "carto" uses CARTO's light or dark map to follow the app theme.
 const BASEMAPS = {
-  osm: {
-    label: 'Street',
-    title: 'OpenStreetMap',
-    tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
-    attribution: '© OpenStreetMap contributors',
-    maxzoom: 19,
-  },
-  satellite: {
-    label: 'Satellite',
-    title: 'Esri World Imagery',
-    tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'],
-    attribution: 'Imagery © Esri, Maxar, Earthstar Geographics',
-    maxzoom: 19,
-  },
+  osm: { label: 'Street', title: 'OpenStreetMap' },
+  satellite: { label: 'Satellite', title: 'Esri World Imagery' },
   carto: { label: 'Light', title: 'CARTO light / dark (follows the app theme)' },
+};
+
+const BASEMAP_SOURCES = {
+  'basemap-osm': { tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'], attribution: '© OpenStreetMap contributors', maxzoom: 19 },
+  'basemap-satellite': { tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'], attribution: 'Imagery © Esri, Maxar, Earthstar Geographics', maxzoom: 19 },
+};
+
+/**
+ * Street and Satellite share one small style (both themes): image tiles that are only shown or
+ * hidden, so switching between them never reloads the style or re-adds the TerraSpec layers, and
+ * CARTO's vector map is not downloaded under them. The tile layers start hidden, so the TerraSpec
+ * layers are drawn without waiting for basemap tiles. Glyphs are CARTO's fonts (barangay names).
+ * Light is CARTO's own vector style (light or dark with the app theme).
+ */
+const RASTER_STYLE = {
+  version: 8,
+  glyphs: 'https://tiles.basemaps.cartocdn.com/fonts/{fontstack}/{range}.pbf',
+  sources: Object.fromEntries(Object.entries(BASEMAP_SOURCES).map(([id, s]) => [id, { type: 'raster', tileSize: 256, ...s }])),
+  layers: [
+    { id: 'basemap-background', type: 'background', paint: { 'background-color': '#eef0ec' } },
+    ...Object.keys(BASEMAP_SOURCES).map(id => ({ id, type: 'raster', source: id, layout: { visibility: 'none' } })),
+  ],
+};
+const RASTER_STYLES = { light: RASTER_STYLE, dark: RASTER_STYLE };
+const CARTO_STYLES = {
+  light: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+  dark: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
 };
 
 function BasemapLayer({ basemap }) {
   const ctx = useMap();
   const map = ctx?.map;
-  // Wait for the map to be ready (also after a light/dark style swap, which removes these layers)
   const ready = !!ctx?.isLoaded;
+  const theme = useResolvedTheme();
   useEffect(() => {
-    if (!map || !ready) return;
+    // Nothing to switch under CARTO's own style
+    if (!map || !ready || !map.getLayer('basemap-background')) return;
     try {
-      const below = OVERLAY_LAYER_IDS.find(id => map.getLayer(id));
-      for (const [key, def] of Object.entries(BASEMAPS)) {
-        if (!def.tiles) continue;
-        const id = `basemap-${key}`;
-        if (!map.getSource(id)) {
-          map.addSource(id, { type: 'raster', tiles: def.tiles, tileSize: 256, maxzoom: def.maxzoom, attribution: def.attribution });
-          map.addLayer({ id, type: 'raster', source: id, layout: { visibility: 'none' } }, below);
-        }
-        map.setLayoutProperty(id, 'visibility', key === basemap ? 'visible' : 'none');
-      }
+      for (const id of Object.keys(BASEMAP_SOURCES)) map.setLayoutProperty(id, 'visibility', id === `basemap-${basemap}` ? 'visible' : 'none');
+      map.setPaintProperty('basemap-background', 'background-color', theme === 'dark' ? '#1a1c1e' : '#eef0ec');
     } catch (e) { console.warn('BasemapLayer error', e); }
-  }, [map, ready, basemap]);
+  }, [map, ready, basemap, theme]);
   return null;
 }
 
@@ -188,7 +196,7 @@ export function MapScreen({ go, barangay, search, setSearch, highlightZones = []
   }
   function toggleLayer(key, on) { setView('custom'); setLayers(l => ({ ...l, [key]: on })); }
   const [basemap, setBasemap] = useState(() => {
-    try { return localStorage.getItem('terraspec-basemap') || 'osm'; } catch { return 'osm'; }
+    try { const saved = localStorage.getItem('terraspec-basemap'); return BASEMAPS[saved] ? saved : 'osm'; } catch { return 'osm'; }
   });
   function chooseBasemap(key) {
     setBasemap(key);
@@ -371,7 +379,7 @@ export function MapScreen({ go, barangay, search, setSearch, highlightZones = []
     <div style={{ position: 'relative', height: '100%', overflow: 'hidden' }}>
       {/* Map fills full area */}
       <div style={{ position: 'absolute', inset: 0 }}>
-        <Map ref={mapRef} center={[125.6847, 7.307]} zoom={12.5} minZoom={10} maxZoom={18} className="h-full w-full">
+        <Map ref={mapRef} styles={basemap === 'carto' ? CARTO_STYLES : RASTER_STYLES}center={[125.6847, 7.307]} zoom={12.5} minZoom={10} maxZoom={18} className="h-full w-full">
           <MapControls showCompass showFullscreen position="top-right"/>
           <BasemapLayer basemap={basemap}/>
           <MapClickHandler onMapClick={handleMapClick}/>
