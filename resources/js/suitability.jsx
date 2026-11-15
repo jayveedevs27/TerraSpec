@@ -206,7 +206,8 @@ function CriteriaWeights({ weights }) {
   );
 }
 
-export function SuitabilityScreen() {
+// role is 'admin' for signed-in LGU staff (admin or planner) and 'public' otherwise; only staff can export
+export function SuitabilityScreen({ role = 'public' }) {
   const [analysisType, setAnalysisType] = useState('commercial');
   const [rankings, setRankings]         = useState([]);
   const [avgScore, setAvgScore]         = useState(0);
@@ -385,14 +386,16 @@ export function SuitabilityScreen() {
           <h1 className="page-title">Suitability Analysis</h1>
           <p className="page-subtitle">AHP-WLC land suitability scoring, compared with AHP-TOPSIS, EWM-WLC and EWM-TOPSIS · {studyArea ? `${studyArea.barangays.length} barangays (reforestation study area)` : '40 zone units'} · Panabo City</p>
         </div>
-        <div className="row" style={{ gap: 8 }}>
-          <Btn variant="outline" icon="download" onClick={exportPDF} disabled={loading || rankings.length === 0}>
-            Export PDF{checkedCount > 0 ? ` (${checkedCount} zones)` : ''}
-          </Btn>
-          <Btn variant="brand" icon="download" onClick={exportAllPDF} disabled={loading || exportingAll}>
-            {exportingAll ? 'Fetching…' : 'Export All Types'}
-          </Btn>
-        </div>
+        {role === 'admin' && (
+          <div className="row" style={{ gap: 8 }}>
+            <Btn variant="outline" icon="download" onClick={exportPDF} disabled={loading || rankings.length === 0}>
+              Export PDF{checkedCount > 0 ? ` (${checkedCount} zones)` : ''}
+            </Btn>
+            <Btn variant="brand" icon="download" onClick={exportAllPDF} disabled={loading || exportingAll}>
+              {exportingAll ? 'Fetching…' : 'Export All Types'}
+            </Btn>
+          </div>
+        )}
       </div>
 
       {/* Analysis type selector */}
