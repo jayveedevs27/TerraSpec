@@ -4,7 +4,8 @@ import { Icon, Logo, Btn, Inp } from './components.jsx';
 import { apiJson, UNAUTHENTICATED_EVENT } from './http.js';
 
 // Required after first login (or after an admin resets the password) before any LGU access.
-function ChangePasswordModal({ user, onChanged, onCancel }) {
+// With `voluntary`, the signed-in user opened it from the account menu and can simply cancel.
+function ChangePasswordModal({ user, onChanged, onCancel, voluntary = false }) {
   const [current, setCurrent]   = useState('');
   const [password, setPassword] = useState('');
   const [confirm, setConfirm]   = useState('');
@@ -37,9 +38,11 @@ function ChangePasswordModal({ user, onChanged, onCancel }) {
   return (
     <div style={{ position: 'fixed', inset: 0, zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.45)', backdropFilter: 'blur(2px)' }}>
       <div style={{ background: 'hsl(var(--card))', border: '1px solid hsl(var(--border))', borderRadius: 14, padding: '28px 28px', width: 360, maxWidth: 'calc(100vw - 32px)', boxShadow: '0 20px 60px rgba(0,0,0,0.25)' }}>
-        <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 4 }}>Set a new password</div>
+        <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 4 }}>{voluntary ? 'Change password' : 'Set a new password'}</div>
         <div className="muted" style={{ fontSize: 12, marginBottom: 16 }}>
-          {user?.email} is using a temporary password. Choose your own before continuing:
+          {voluntary
+            ? `Choose a new password for ${user?.email}: `
+            : `${user?.email} is using a temporary password. Choose your own before continuing: `}
           at least 10 characters with upper- and lowercase letters and a number.
         </div>
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -52,7 +55,7 @@ function ChangePasswordModal({ user, onChanged, onCancel }) {
             </div>
           )}
           <div className="row" style={{ gap: 8, marginTop: 4 }}>
-            <Btn type="button" variant="outline" style={{ flex: 1 }} onClick={onCancel}>Log out</Btn>
+            <Btn type="button" variant="outline" style={{ flex: 1 }} onClick={onCancel}>{voluntary ? 'Cancel' : 'Log out'}</Btn>
             <Btn type="submit" variant="brand" style={{ flex: 1 }} disabled={loading}>
               {loading ? 'Saving…' : 'Save password'}
             </Btn>
@@ -158,6 +161,18 @@ function App() {
   const [role, setRole]               = useState('public');
   const [lguUser, setLguUser]         = useState(null);
   const [mustChangePassword, setMustChangePassword] = useState(false);
+  // Account menu in the top bar (signed-in staff only) and the password change it can open
+  const [showAccountMenu, setShowAccountMenu] = useState(false);
+  const [changingPassword, setChangingPassword] = useState(false);
+  const accountMenuRef = useRef(null);
+  useEffect(() => {
+    if (!showAccountMenu) return;
+    const onPointer = e => { if (!accountMenuRef.current?.contains(e.target)) setShowAccountMenu(false); };
+    const onKey = e => { if (e.key === 'Escape') setShowAccountMenu(false); };
+    document.addEventListener('mousedown', onPointer);
+    document.addEventListener('keydown', onKey);
+    return () => { document.removeEventListener('mousedown', onPointer); document.removeEventListener('keydown', onKey); };
+  }, [showAccountMenu]);
   const [dark, setDark]               = useState(false);
   const [showLogin, setShowLogin]     = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
@@ -257,6 +272,14 @@ function App() {
           onCancel={handleLogout}
         />
       )}
+      {changingPassword && !mustChangePassword && lguUser && (
+        <ChangePasswordModal
+          voluntary
+          user={lguUser}
+          onChanged={user => { applySession(user); setChangingPassword(false); }}
+          onCancel={() => setChangingPassword(false)}
+        />
+      )}
       {/* Topbar */}
       <header className="topbar" style={{ gap: 0 }}>
         {/* Left section */}
@@ -280,21 +303,44 @@ function App() {
         {/* Right section */}
         <div className="row topbar-actions" style={{ flex: 1, justifyContent: 'flex-end', gap: 8 }}>
           <div className="tabs">
-            <div className={`tab${role === 'public' ? ' active' : ''}`} style={{ cursor: 'pointer' }} onClick={() => role === 'admin' ? handleLogout() : null}>Public</div>
+            <div className={`tab${role === 'public' ? ' active' : ''}`} style={{ cursor: 'pointer' }} onClick={() => role === 'admin' ? handleLogout() : null} title={role === 'admin' ? 'Sign out and return to the public view' : undefined}>Public</div>
             <div className={`tab${role === 'admin' ? ' active' : ''}`} style={{ cursor: 'pointer' }} onClick={() => role === 'admin' ? null : setShowLogin(true)}>LGU Admin</div>
           </div>
-
-          {role === 'admin' && lguUser && (
-            <span className="muted" style={{ fontSize: 12, whiteSpace: 'nowrap' }}>{lguUser.name}</span>
-          )}
 
           <button className="btn btn-ghost btn-icon btn-sm" onClick={() => setDark(d => !d)} title={dark ? 'Light mode' : 'Dark mode'}>
             <Icon name={dark ? 'sun' : 'moon'} size={14}/>
           </button>
 
-          <div className="topbar-avatar" style={{ width: 28, height: 28, borderRadius: '50%', background: 'hsl(var(--foreground) / 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'hsl(var(--foreground))', fontSize: 12, fontWeight: 600 }}>
-            {lguUser ? lguUser.name.charAt(0).toUpperCase() : 'G'}
-          </div>
+          {role === 'admin' && lguUser && (
+            <div className="topbar-account" ref={accountMenuRef}>
+              <button
+                type="button"
+                className="topbar-account-btn"
+                onClick={() => setShowAccountMenu(o => !o)}
+                aria-haspopup="menu"
+                aria-expanded={showAccountMenu}
+                title={`Signed in as ${lguUser.email}`}
+              >
+                <span className="topbar-account-initial">{lguUser.name.charAt(0).toUpperCase()}</span>
+                <span className="topbar-account-name">{lguUser.name}</span>
+              </button>
+              {showAccountMenu && (
+                <div className="topbar-account-menu" role="menu">
+                  <div className="topbar-account-head">
+                    <div className="topbar-account-head-name">{lguUser.name}</div>
+                    <div className="topbar-account-head-email">{lguUser.email}</div>
+                    <div className="topbar-account-head-role">{lguUser.role === 'admin' ? 'Administrator' : lguUser.role === 'planner' ? 'Planner' : lguUser.role}</div>
+                  </div>
+                  <button type="button" role="menuitem" onClick={() => { setShowAccountMenu(false); setChangingPassword(true); }}>
+                    <Icon name="lock" size={14}/> Change password
+                  </button>
+                  <button type="button" role="menuitem" onClick={() => { setShowAccountMenu(false); handleLogout(); }}>
+                    <Icon name="x" size={14}/> Sign out
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </header>
 
