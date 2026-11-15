@@ -35,7 +35,8 @@ function buildMatrix(upper, n) {
   return Array.from({ length: n }, (_, i) =>
     Array.from({ length: n }, (_, j) => {
       if (i === j) return 1;
-      return i < j ? parseScale(upper[i][j]) : 1 / parseScale(upper[j][i]);
+      // A cell not chosen yet (e.g. right after the criteria count changes) counts as 1, equal importance
+      return i < j ? parseScale(upper[i]?.[j] ?? '1') : 1 / parseScale(upper[j]?.[i] ?? '1');
     })
   );
 }
@@ -474,7 +475,12 @@ export function AdminScreen({ staffRole }) {
             key={t}
             className={`tab${tab === t ? ' active' : ''}`}
             style={{ cursor: 'pointer', textTransform: 'capitalize' }}
-            onClick={() => { setTab(t); setModal(null); }}
+            onClick={() => {
+              // The previous tab's rows must not reach the new tab's view while its own rows load
+              // (barangay rows given to the AHP matrix crashed the whole screen)
+              if (t !== tab) { setRows([]); setLoading(true); }
+              setTab(t); setModal(null);
+            }}
           >
             {t === 'ahp' ? 'AHP Matrix' : t === 'criteria' ? 'AHP Weights' : t}
           </div>
