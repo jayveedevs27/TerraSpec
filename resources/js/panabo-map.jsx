@@ -20,9 +20,12 @@ const BASEMAPS = {
   carto: { label: 'Light', title: 'CARTO light / dark (follows the app theme)' },
 };
 
+// maxzoom is the deepest tile level requested; deeper map zooms stretch those tiles. Esri has imagery
+// over all of Panabo at level 18, but about half the city gets "Map data not yet available" placeholder
+// tiles at level 19 (checked on a 35-point grid), so satellite stops at 18.
 const BASEMAP_SOURCES = {
   'basemap-osm': { tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'], attribution: '© OpenStreetMap contributors', maxzoom: 19 },
-  'basemap-satellite': { tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'], attribution: 'Imagery © Esri, Maxar, Earthstar Geographics', maxzoom: 19 },
+  'basemap-satellite': { tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'], attribution: 'Imagery © Esri, Maxar, Earthstar Geographics', maxzoom: 18 },
 };
 
 /**
