@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { createConversation, loadConversations, getChatStorageKey, getOrCreateGuestToken, GUEST_TOKEN_KEY } from './data.js';
-import { Icon, Btn } from './components.jsx';
+import { Icon, Btn, levelStyle } from './components.jsx';
 
 function renderInline(text) {
   const result = [];
@@ -73,7 +73,7 @@ const ANALYSIS_COLORS = {
 };
 
 function LiveCalcCard({ data, go }) {
-  const scoreColor = data.total_pct >= 75 ? '#16a34a' : data.total_pct >= 50 ? '#d97706' : '#dc2626';
+  const scoreColor = levelStyle(data.suitability_level).hex;
   const typeColor  = ANALYSIS_COLORS[data.analysis_type] ?? 'hsl(var(--brand))';
 
   return (
@@ -140,6 +140,34 @@ function LiveCalcCard({ data, go }) {
   );
 }
 
+// Runs the same AI map-filter extraction as "Ask the map" and opens Map Viewer with the result applied
+function ShowOnMapButton({ question, go }) {
+  const [state, setState] = useState('idle');
+  async function show() {
+    setState('loading');
+    try {
+      const res = await fetch('/api/map/interpret', {
+        method: 'POST',
+        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question }),
+      });
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok || !body.data?.understood) throw new Error(body.message ?? 'not a map question');
+      go('map', { askResult: body.data });
+    } catch {
+      setState('failed');
+    }
+  }
+  return (
+    <div className="row" style={{ gap: 8, alignItems: 'center' }}>
+      <button onClick={show} disabled={state === 'loading'} className="chip" style={{ fontSize: 12, fontWeight: 600, color: 'hsl(var(--brand))', borderColor: 'hsl(var(--brand) / 0.45)', display: 'inline-flex', alignItems: 'center', gap: 5 }}>
+        <Icon name="map" size={12}/> {state === 'loading' ? 'Reading the question…' : 'Show on map'}
+      </button>
+      {state === 'failed' && <span className="muted" style={{ fontSize: 11.5 }}>Could not turn this into map filters. Try the Ask the map bar in Map Viewer.</span>}
+    </div>
+  );
+}
+
 export function ChatScreen({ initialConvId, go, role = 'public', mapContext, setMapContext } = {}) {
   const [conversations, setConversations] = useState(() => loadConversations(role));
   const [activeId, setActiveId] = useState(() => {
@@ -169,7 +197,9 @@ export function ChatScreen({ initialConvId, go, role = 'public', mapContext, set
   const [chatInput, setChatInput] = useState('');
   const [chatError, setChatError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [nlpPane, setNlpPane] = useState(true);
+  // On a phone the inspector and the conversation list open over the chat, so both start closed there
+  const [nlpPane, setNlpPane] = useState(() => window.innerWidth > 900);
+  const [showConvs, setShowConvs] = useState(false);
   const [nlpData, setNlpData] = useState({ intent: null, entities: [], messageCount: 0 });
   const [confirmModal, setConfirmModal] = useState(null); // { message, onConfirm }
   const messagesRef = React.useRef(null);
@@ -230,6 +260,7 @@ export function ChatScreen({ initialConvId, go, role = 'public', mapContext, set
     setConversations(cs => [c, ...cs]);
     setActiveId(c.id);
     setChatInput(''); setChatError('');
+    setShowConvs(false);
   }
 
   function deleteConv(id) {
@@ -302,8 +333,8 @@ export function ChatScreen({ initialConvId, go, role = 'public', mapContext, set
         body: JSON.stringify({
           prompt: message,
           context: {
-            selection:   mapContext?.barangay ?? 'Panabo City',
-            suitability: mapContext?.score    ?? null,
+            selection:   mapContext?.selection ?? mapContext?.barangay ?? 'Panabo City',
+            ...(mapContext?.score != null && { suitability: mapContext.score }),
             zone:        mapContext?.zone     ?? null,
           },
         }),
@@ -319,6 +350,10 @@ export function ChatScreen({ initialConvId, go, role = 'public', mapContext, set
         const msgs = c.messages.filter(m => m.content !== 'Thinking...').concat({
           role:             'assistant',
           content:          payload.answer || 'Gemini returned an empty response.',
+          model:            payload.model || null,
+          question:         message,
+          mapIntent:        ['zoning_compliance', 'environmental_assessment'].includes(intent),
+          fallbackUsed:     !!payload.fallback_used,
           zones:            payload.recommended_zones ?? [],
           live_calculation: payload.live_calculation || null,
           followups:        buildFollowups(intent, entities),
@@ -334,7 +369,7 @@ export function ChatScreen({ initialConvId, go, role = 'public', mapContext, set
       const text = err instanceof Error ? err.message : 'The assistant could not answer right now.';
       setChatError(text);
       updateActive(c => ({
-        messages: c.messages.filter(m => m.content !== 'Thinking...').concat({ role: 'assistant', content: 'Could not reach Gemini 2.5 Flash. Check the API key and try again.' }),
+        messages: c.messages.filter(m => m.content !== 'Thinking...').concat({ role: 'assistant', content: text }),
       }));
     } finally {
       setIsLoading(false); setChatInput('');
@@ -507,7 +542,7 @@ export function ChatScreen({ initialConvId, go, role = 'public', mapContext, set
         style={{ position: 'relative', padding: '7px 8px', borderRadius: 7, cursor: 'pointer', background: isActive ? 'hsl(var(--accent))' : 'transparent', marginBottom: 2, display: 'flex', alignItems: 'center', gap: 5 }}
         onMouseEnter={() => setHoveredId(c.id)}
         onMouseLeave={() => setHoveredId(null)}
-        onClick={() => { if (!isRenamingInline) setActiveId(c.id); }}
+        onClick={() => { if (!isRenamingInline) { setActiveId(c.id); setShowConvs(false); } }}
       >
         {isPinned && (
           <Icon name="pin" size={9} style={{ color: 'hsl(var(--brand))', flexShrink: 0, opacity: 0.7 }}/>
@@ -590,9 +625,11 @@ export function ChatScreen({ initialConvId, go, role = 'public', mapContext, set
   }
 
   return (
-    <div style={{ display: 'flex', height: '100%', overflow: 'hidden' }}>
+    <div style={{ display: 'flex', height: '100%', overflow: 'hidden', position: 'relative' }}>
       {/* Conversations list */}
-      <div style={{ width: 220, borderRight: '1px solid hsl(var(--border))', display: 'flex', flexDirection: 'column', background: 'hsl(var(--background))' }}>
+      {/* Phone only: tapping beside the open conversation list closes it */}
+      {showConvs && <div className="chat-convs-backdrop" onClick={() => setShowConvs(false)} aria-hidden="true"/>}
+      <div className={`chat-convs${showConvs ? ' open' : ''}`} style={{ width: 220, borderRight: '1px solid hsl(var(--border))', display: 'flex', flexDirection: 'column', background: 'hsl(var(--background))' }}>
         <div style={{ padding: '12px 10px', borderBottom: '1px solid hsl(var(--border))' }}>
           <Btn variant="brand" icon="plus" onClick={newConv} style={{ width: '100%', justifyContent: 'center' }}>New Chat</Btn>
         </div>
@@ -671,8 +708,11 @@ export function ChatScreen({ initialConvId, go, role = 'public', mapContext, set
       {/* Chat area */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
         <div style={{ padding: '12px 18px', borderBottom: '1px solid hsl(var(--border))', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div className="row" style={{ gap: 10 }}>
-            <div style={{ width: 30, height: 30, borderRadius: 8, background: 'hsl(var(--brand))', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div className="row" style={{ gap: 10, minWidth: 0 }}>
+            <button className="btn btn-ghost btn-icon btn-sm show-on-phone" onClick={() => setShowConvs(v => !v)} title="Conversations" aria-label="Conversations">
+              <Icon name="list" size={15}/>
+            </button>
+            <div className="hide-on-phone" style={{ width: 30, height: 30, borderRadius: 8, background: 'hsl(var(--brand))', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Icon name="bot" size={16} style={{ color: 'white' }}/>
             </div>
             <div className="row" style={{ gap: 8 }}>
@@ -686,7 +726,7 @@ export function ChatScreen({ initialConvId, go, role = 'public', mapContext, set
                   }}
                   autoFocus
                   className="input"
-                  style={{ height: 30, width: 240, fontSize: 13 }}
+                  style={{ height: 30, width: 240, maxWidth: '45vw', fontSize: 13 }}
                   placeholder="Conversation name"
                 />
               ) : (
@@ -779,6 +819,14 @@ export function ChatScreen({ initialConvId, go, role = 'public', mapContext, set
                     {m.role === 'assistant' ? renderMarkdown(m.content) : m.content}
                   </div>
                 )}
+                {m.role === 'assistant' && m.mapIntent && m.question && go && (
+                  <ShowOnMapButton question={m.question} go={go}/>
+                )}
+                {m.role === 'assistant' && m.model && (
+                  <div className="muted mono" style={{ fontSize: 10.5 }} title={m.fallbackUsed ? 'The main model was busy or out of quota, so a backup model answered.' : undefined}>
+                    Answered by {m.model}{m.fallbackUsed ? ' (backup model)' : ''}
+                  </div>
+                )}
                 {m.role === 'assistant' && m.zones?.length > 0 && (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
@@ -797,9 +845,9 @@ export function ChatScreen({ initialConvId, go, role = 'public', mapContext, set
                           <span style={{ fontWeight: 500 }}>{z.unit_name}</span>
                           <span style={{
                             padding: '1px 6px', borderRadius: 4, fontSize: 11, fontWeight: 600,
-                            background: z.total_pct >= 75 ? 'hsl(142 72% 29% / 0.15)' : z.total_pct >= 55 ? 'hsl(38 92% 50% / 0.15)' : 'hsl(var(--muted))',
-                            color: z.total_pct >= 75 ? 'hsl(142 72% 29%)' : z.total_pct >= 55 ? 'hsl(32 95% 44%)' : 'hsl(var(--muted-foreground))',
-                          }}>{z.total_pct}%</span>
+                            background: levelStyle(z.suitability_level).bg,
+                            color: levelStyle(z.suitability_level).hex,
+                          }} title={z.suitability_level}>{z.total_pct}%</span>
                         </div>
                       ))}
                     </div>
@@ -915,7 +963,7 @@ export function ChatScreen({ initialConvId, go, role = 'public', mapContext, set
 
       {/* NLP Inspector */}
       {nlpPane && (
-        <div style={{ width: 260, borderLeft: '1px solid hsl(var(--border))', display: 'flex', flexDirection: 'column', background: 'hsl(var(--muted) / 0.3)' }}>
+        <div className="chat-inspector" style={{ width: 260, borderLeft: '1px solid hsl(var(--border))', display: 'flex', flexDirection: 'column', background: 'hsl(var(--muted) / 0.3)' }}>
           <div style={{ padding: '12px 14px', borderBottom: '1px solid hsl(var(--border))' }}>
             <div style={{ fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'hsl(var(--muted-foreground))' }}>NLP Inspector</div>
           </div>
@@ -946,7 +994,6 @@ export function ChatScreen({ initialConvId, go, role = 'public', mapContext, set
                     const dotColor = {
                       barangay: 'hsl(var(--brand))',
                       zone:     '#3b82f6',
-                      parcel:   '#8b5cf6',
                       species:  '#0d9488',
                       hazard:   'hsl(var(--destructive))',
                     }[e.type] ?? 'hsl(var(--muted-foreground))';
@@ -993,7 +1040,7 @@ export function ChatScreen({ initialConvId, go, role = 'public', mapContext, set
           onClick={() => setConfirmModal(null)}
         >
           <div
-            style={{ background: 'hsl(var(--card))', border: '1px solid hsl(var(--border))', borderRadius: 14, padding: '28px 28px 22px', width: 360, boxShadow: '0 24px 64px rgba(0,0,0,0.28)', display: 'flex', flexDirection: 'column', gap: 14 }}
+            style={{ background: 'hsl(var(--card))', border: '1px solid hsl(var(--border))', borderRadius: 14, padding: '28px 28px 22px', width: 360, maxWidth: 'calc(100vw - 32px)', boxShadow: '0 24px 64px rgba(0,0,0,0.28)', display: 'flex', flexDirection: 'column', gap: 14 }}
             onClick={e => e.stopPropagation()}
           >
             {/* Icon */}
