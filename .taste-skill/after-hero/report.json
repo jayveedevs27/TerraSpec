@@ -1,0 +1,3057 @@
+{
+ "url": "http://127.0.0.1:8002/",
+ "at": "2026-11-01T19:21:09.194Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 10,
+   "filled": [
+    0.73,
+    0.99,
+    0.95,
+    0.92,
+    0.88,
+    0.91,
+    0.9,
+    0.87,
+    0.91,
+    0.98
+   ],
+   "motion": {
+    "elements": 26,
+    "css": 2,
+    "transitions": 8,
+    "scripted": 16,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 8835,
+     "screens": 9.8,
+     "words": 954,
+     "img": 2,
+     "video": 0,
+     "canvas": 0,
+     "svg": 11,
+     "sections": 7,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Panabo's zoning, now a live map",
+     "words": 6,
+     "chars": 31,
+     "lines": 2,
+     "size": 60,
+     "vw": 4.2,
+     "font": "Fraunces",
+     "weight": 400,
+     "tracking": -0.03,
+     "leading": 1,
+     "top": 153,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Panabo's zoning, now a live map",
+     "words": 6,
+     "lines": 2,
+     "size": 60,
+     "font": "Fraunces"
+    },
+    "headings": [
+     {
+      "text": "Panabo's zoning, now a live map",
+      "words": 6,
+      "chars": 31,
+      "lines": 2,
+      "size": 60,
+      "vw": 4.2,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.31,
+      "top": 153,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "40",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 52,
+      "vw": 3.6,
+      "font": "Fraunces",
+      "weight": 300,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.16,
+      "top": 945,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "7",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 52,
+      "vw": 3.6,
+      "font": "Fraunces",
+      "weight": 300,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.16,
+      "top": 945,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "5",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 52,
+      "vw": 3.6,
+      "font": "Fraunces",
+      "weight": 300,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": true,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.16,
+      "top": 945,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "4",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 52,
+      "vw": 3.6,
+      "font": "Fraunces",
+      "weight": 300,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.16,
+      "top": 945,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "The city's zoning, layer by layer",
+      "words": 6,
+      "chars": 33,
+      "lines": 1,
+      "size": 56,
+      "vw": 3.9,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.56,
+      "top": 1218,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Panabo City, on one map",
+      "words": 5,
+      "chars": 23,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.32,
+      "top": 1690,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "0 ha",
+      "words": 2,
+      "chars": 4,
+      "lines": 1,
+      "size": 32,
+      "vw": 2.2,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.11,
+      "top": 2087,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Most of it is farmland",
+      "words": 5,
+      "chars": 22,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.32,
+      "top": 2332,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "20,297 ha 76.9% of the city",
+      "words": 6,
+      "chars": 27,
+      "lines": 2,
+      "size": 44,
+      "vw": 3.1,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.32,
+      "top": 2388,
+      "mixedFonts": [
+       "Fraunces",
+       "Geist"
+      ],
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Where people live",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.32,
+      "top": 3034,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "2,877 ha 10.9% of the city",
+      "words": 6,
+      "chars": 26,
+      "lines": 2,
+      "size": 44,
+      "vw": 3.1,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.32,
+      "top": 3090,
+      "mixedFonts": [
+       "Fraunces",
+       "Geist"
+      ],
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Trade, industry and services",
+      "words": 4,
+      "chars": 28,
+      "lines": 2,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.32,
+      "top": 3646,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "2,590 ha 9.8% of the city",
+      "words": 6,
+      "chars": 25,
+      "lines": 2,
+      "size": 44,
+      "vw": 3.1,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.32,
+      "top": 3744,
+      "mixedFonts": [
+       "Fraunces",
+       "Geist"
+      ],
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "What stays green",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.32,
+      "top": 4411,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "639 ha 2.4% of the city",
+      "words": 6,
+      "chars": 23,
+      "lines": 2,
+      "size": 44,
+      "vw": 3.1,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.32,
+      "top": 4467,
+      "mixedFonts": [
+       "Fraunces",
+       "Geist"
+      ],
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Every zone, one answer away",
+      "words": 5,
+      "chars": 27,
+      "lines": 2,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.32,
+      "top": 5068,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "How to use TerraSpec in five steps.",
+      "words": 7,
+      "chars": 35,
+      "lines": 1,
+      "size": 56,
+      "vw": 3.9,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.56,
+      "top": 6073,
+      "mixedFonts": [
+       "Fraunces",
+       "Fraunces italic"
+      ],
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "A three-tier architecture for spatial decisions.",
+      "words": 6,
+      "chars": 48,
+      "lines": 2,
+      "size": 56,
+      "vw": 3.9,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.56,
+      "top": 6886,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Two Sustainable Development Goals, one decision layer.",
+      "words": 7,
+      "chars": 54,
+      "lines": 2,
+      "size": 56,
+      "vw": 3.9,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.56,
+      "top": 7662,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "11",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 96,
+      "vw": 6.7,
+      "font": "Fraunces",
+      "weight": 300,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.04,
+      "top": 7848,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "15",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 96,
+      "vw": 6.7,
+      "font": "Fraunces",
+      "weight": 300,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.05,
+      "top": 7848,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Sustainable Cities & Communities",
+      "words": 4,
+      "chars": 32,
+      "lines": 1,
+      "size": 30,
+      "vw": 2.1,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.36,
+      "top": 7886,
+      "tag": "h4",
+      "kind": "heading"
+     },
+     {
+      "text": "Life on Land",
+      "words": 3,
+      "chars": 12,
+      "lines": 1,
+      "size": 30,
+      "vw": 2.1,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.36,
+      "top": 7886,
+      "tag": "h4",
+      "kind": "heading"
+     },
+     {
+      "text": "Open the system and explore your first barangay.",
+      "words": 8,
+      "chars": 48,
+      "lines": 2,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Fraunces",
+      "weight": 300,
+      "tracking": -0.025,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.41,
+      "top": 8280,
+      "mixedFonts": [
+       "Fraunces",
+       "Fraunces italic"
+      ],
+      "tag": "h3",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 25,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 4,
+     "centered": 0,
+     "medianWords": 5,
+     "mixedFontHeadings": 6
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Geist",
+       "share": 0.81,
+       "mono": false
+      },
+      {
+       "family": "Fraunces",
+       "share": 0.1,
+       "mono": false
+      },
+      {
+       "family": "Geist Mono",
+       "share": 0.09,
+       "mono": true
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      22,
+      30,
+      32,
+      40,
+      44,
+      48,
+      52,
+      56,
+      60,
+      96
+     ],
+     "sizeCount": 18,
+     "notLoaded": [],
+     "body": {
+      "font": "Geist",
+      "size": 12.5,
+      "leading": 1.4,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 10
+     },
+     "measureChars": 52,
+     "max": {
+      "size": 96,
+      "vw": 6.7,
+      "font": "Fraunces",
+      "text": "11"
+     },
+     "monoShare": 0.09,
+     "monoProseShare": 0.09,
+     "monoFamilies": [
+      "Geist Mono"
+     ],
+     "monoSamples": [
+      "Barangays mapped",
+      "Suitability criteria",
+      "Native species catalogued",
+      "MCDA methods compared",
+      "— For the public",
+      "01"
+     ],
+     "microLabels": 20,
+     "microLabelShare": 0.062,
+     "microSamples": [
+      "Barangays mapped",
+      "Suitability criteria",
+      "Native species catalogued",
+      "MCDA methods compared",
+      "— For the public",
+      "— Under the hood"
+     ],
+     "upperShare": 0.06,
+     "centerShare": 0.01,
+     "smallText": 24
+    },
+    "eyebrows": [
+     {
+      "text": "— For the public",
+      "above": "How to use TerraSpec in five steps.",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 6043
+     },
+     {
+      "text": "— Under the hood",
+      "above": "A three-tier architecture for spatial de",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 6855
+     },
+     {
+      "text": "— Aligned with",
+      "above": "Two Sustainable Development Goals, one d",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 7632
+     },
+     {
+      "text": "SDG 11",
+      "above": "Sustainable Cities & Communities",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 12,
+      "top": 7856
+     },
+     {
+      "text": "SDG 15",
+      "above": "Life on Land",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 12,
+      "top": 7856
+     },
+     {
+      "text": "— Now go decide",
+      "above": "Open the system and explore your first b",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 8250
+     }
+    ],
+    "numbered": [
+     {
+      "text": "01",
+      "size": 22,
+      "top": 6281
+     },
+     {
+      "text": "02",
+      "size": 22,
+      "top": 6281
+     },
+     {
+      "text": "03",
+      "size": 22,
+      "top": 6281
+     },
+     {
+      "text": "04",
+      "size": 22,
+      "top": 6281
+     },
+     {
+      "text": "05",
+      "size": 22,
+      "top": 6281
+     }
+    ],
+    "color": {
+     "bodyBg": "#ffffff",
+     "bodyBgHsl": {
+      "h": 0,
+      "s": 0,
+      "l": 1
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#fbfaf7",
+       "top": 0,
+       "hsl": {
+        "h": 45,
+        "s": 0.33,
+        "l": 0.98
+       }
+      },
+      {
+       "color": "#ffffff",
+       "top": 65,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#eff1f0",
+       "top": 121,
+       "hsl": {
+        "h": 150,
+        "s": 0.07,
+        "l": 0.94
+       }
+      },
+      {
+       "color": "#e2e9e7",
+       "top": 153,
+       "hsl": {
+        "h": 163,
+        "s": 0.14,
+        "l": 0.9
+       }
+      },
+      {
+       "color": "#eaf0ee",
+       "top": 1393,
+       "hsl": {
+        "h": 160,
+        "s": 0.17,
+        "l": 0.93
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#54545f",
+       "share": 0.25
+      },
+      {
+       "color": "#1c1c22",
+       "share": 0.18
+      },
+      {
+       "color": "#121216",
+       "share": 0.14
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.1
+      },
+      {
+       "color": "#484851",
+       "share": 0.07
+      }
+     ],
+     "button": {
+      "bg": "#121216",
+      "hsl": {
+       "h": 240,
+       "s": 0.1,
+       "l": 0.08
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 5,
+     "inHero": 2,
+     "radius": 8,
+     "height": 38,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Launch system",
+      "Open the system"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 1,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "div.lp-stats → rgba(20, 40, 30, 0.35) 0px 30px 60px -30px"
+     ],
+     "gradients": 3,
+     "scrims": 0,
+     "gradientSamples": [
+      "div.sdg-card.sdg-11 → linear-gradient(135deg, rgb(253, 157, 36) 0%, rgb(217, 119, 6) 100%)",
+      "div.sdg-card.sdg-15 → linear-gradient(135deg, rgb(86, 192, 43) 0%, rgb(47, 122, 22) 100%)",
+      "div → radial-gradient(circle at 20% 30%, rgb(57, 198, 156) 0%, rgba(0, 0, 0, 0) 35%), radial-gradient(circle at 80% "
+     ],
+     "gradientText": 0,
+     "hairlines": 19,
+     "hairlineSamples": [
+      "nav.lp-nav 1440px",
+      "section#zoning.lp-section.zs 1440px",
+      "section#howto.lp-section 1440px",
+      "div 235px",
+      "div 235px"
+     ],
+     "outlinedBoxes": 4,
+     "dashed": 8,
+     "blurred": 1,
+     "roundedBoxes": 7,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 7119
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "svg",
+      "ratio": 0.3
+     }
+    ],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 65,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "fraunces",
+     "geist",
+     "geist mono"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 8835,
+    "margins": {
+     "left": 132,
+     "right": 162
+    },
+    "sections": [
+     {
+      "sel": "section.lh",
+      "tag": "section",
+      "top": 65,
+      "height": 836,
+      "words": 90,
+      "media": 1,
+      "middle": 40,
+      "heading": {
+       "text": "Panabo's zoning, now a live map",
+       "size": 60,
+       "tag": "h1"
+      },
+      "left": 162,
+      "right": 170,
+      "textLeft": 162,
+      "textRight": 170,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.lp-shell",
+      "tag": "section",
+      "top": 909,
+      "height": 220,
+      "words": 42,
+      "media": 0,
+      "middle": 103,
+      "heading": {
+       "text": "40",
+       "size": 52,
+       "tag": "div"
+      },
+      "left": 172,
+      "right": 184,
+      "textLeft": 172,
+      "textRight": 184,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#zoning.lp-section.zs",
+      "tag": "section",
+      "top": 1129,
+      "height": 4825,
+      "words": 310,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "The city's zoning, layer by layer",
+       "size": 56,
+       "tag": "h2"
+      },
+      "left": 132,
+      "right": 193,
+      "textLeft": 132,
+      "textRight": 193,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": true
+     },
+     {
+      "sel": "section#howto.lp-section",
+      "tag": "section",
+      "top": 5954,
+      "height": 812,
+      "words": 225,
+      "media": 0,
+      "middle": 45,
+      "heading": {
+       "text": "How to use",
+       "size": 56,
+       "tag": "h2"
+      },
+      "left": 132,
+      "right": 155,
+      "textLeft": 132,
+      "textRight": 155,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#arch.lp-section",
+      "tag": "section",
+      "top": 6766,
+      "height": 776,
+      "words": 140,
+      "media": 0,
+      "middle": 65,
+      "heading": {
+       "text": "A three-tier architecture for spatial decisions.",
+       "size": 56,
+       "tag": "h2"
+      },
+      "left": 132,
+      "right": 200,
+      "textLeft": 132,
+      "textRight": 200,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.lp-section",
+      "tag": "section",
+      "top": 7543,
+      "height": 595,
+      "words": 85,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "11",
+       "size": 96,
+       "tag": "span"
+      },
+      "left": 132,
+      "right": 156,
+      "textLeft": 132,
+      "textRight": 156,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.lp-section",
+      "tag": "section",
+      "top": 8138,
+      "height": 355,
+      "words": 17,
+      "media": 0,
+      "middle": 99,
+      "heading": {
+       "text": "Open the system and",
+       "size": 48,
+       "tag": "h3"
+      },
+      "left": 188,
+      "right": 188,
+      "textLeft": 188,
+      "textRight": 434,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.lp-footer",
+      "tag": "footer",
+      "top": 8525,
+      "height": 310,
+      "words": 66,
+      "media": 0,
+      "middle": 172,
+      "heading": null,
+      "left": 132,
+      "right": 132,
+      "textLeft": 132,
+      "textRight": 132,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Panabo's zoning, now a live map",
+      "size": 60,
+      "top": 153,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 132,
+      "n": 7
+     },
+     {
+      "x": 838,
+      "n": 3
+     },
+     {
+      "x": 188,
+      "n": 2
+     },
+     {
+      "x": 164,
+      "n": 1
+     },
+     {
+      "x": 404,
+      "n": 1
+     },
+     {
+      "x": 534,
+      "n": 1
+     },
+     {
+      "x": 638,
+      "n": 1
+     },
+     {
+      "x": 759,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 17,
+    "bodySize": 13,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0.07,
+    "voidBox": {
+     "x": 0,
+     "y": 120,
+     "w": 120,
+     "h": 780
+    }
+   },
+   "app": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "dark": false,
+    "ground": "#ffffff",
+    "sidebar": null,
+    "topbar": {
+     "h": 65
+    },
+    "canvas": {
+     "left": 132,
+     "right": 156
+    },
+    "hero": {
+     "text": "Panabo's zoning, now a live map",
+     "words": 6,
+     "chars": 31,
+     "lines": 2,
+     "size": 60,
+     "vw": 4.2,
+     "font": "Fraunces",
+     "weight": 400,
+     "tracking": -0.03,
+     "leading": 1,
+     "top": 153,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 2,
+    "layout": {
+     "panels": 9,
+     "firstScreen": 1,
+     "ragged": [],
+     "voids": [
+      {
+       "gap": 72,
+       "at": 7360,
+       "panel": "What the citizen sees."
+      },
+      {
+       "gap": 51,
+       "at": 7381,
+       "panel": "What the city owns."
+      }
+     ]
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 10,
+     "radii": [
+      [
+       16,
+       6
+      ],
+      [
+       12,
+       2
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       20,
+       1
+      ]
+     ],
+     "heavyBorders": 2,
+     "borderSamples": [
+      "#379178 on #fbfaf7 (3.67:1)",
+      "#349378 on #fbfaf7 (3.6:1)"
+     ],
+     "heavyShadows": 1,
+     "softShadows": 0,
+     "shadowSamples": [
+      "rgba(20, 40, 30, 0.35) 0px 30px 60px -30px"
+     ],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 8,
+     "tabularShare": 1,
+     "kpiMax": 96
+    },
+    "rows": null,
+    "chartHues": 9,
+    "placeholders": [],
+    "type": {
+     "under13": 0.09,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      22,
+      30,
+      32,
+      40,
+      44,
+      48,
+      52,
+      56,
+      60,
+      96
+     ]
+    },
+    "title": {
+     "text": "Panabo's zoning, now a live map",
+     "size": 60,
+     "top": 153
+    },
+    "colourShare": 0.105
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 12,
+   "filled": [
+    0.92,
+    0.91,
+    1,
+    0.99,
+    1,
+    0.99,
+    1,
+    0.83,
+    0.83,
+    0.63,
+    0.92,
+    1
+   ],
+   "motion": {
+    "elements": 23,
+    "css": 0,
+    "transitions": 7,
+    "scripted": 16,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 10882,
+     "screens": 12.9,
+     "words": 949,
+     "img": 2,
+     "video": 0,
+     "canvas": 0,
+     "svg": 11,
+     "sections": 7,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Panabo's zoning, now a live map",
+     "words": 6,
+     "chars": 31,
+     "lines": 2,
+     "size": 35,
+     "vw": 9,
+     "font": "Fraunces",
+     "weight": 400,
+     "tracking": -0.03,
+     "leading": 1,
+     "top": 101,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Panabo's zoning, now a live map",
+     "words": 6,
+     "lines": 2,
+     "size": 35.1,
+     "font": "Fraunces"
+    },
+    "headings": [
+     {
+      "text": "Panabo's zoning, now a live map",
+      "words": 6,
+      "chars": 31,
+      "lines": 2,
+      "size": 35.1,
+      "vw": 9,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.82,
+      "top": 101,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "40",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 52,
+      "vw": 13.3,
+      "font": "Fraunces",
+      "weight": 300,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.27,
+      "top": 1261,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "7",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 52,
+      "vw": 13.3,
+      "font": "Fraunces",
+      "weight": 300,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.27,
+      "top": 1261,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "5",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 52,
+      "vw": 13.3,
+      "font": "Fraunces",
+      "weight": 300,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": true,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.27,
+      "top": 1446,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "4",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 52,
+      "vw": 13.3,
+      "font": "Fraunces",
+      "weight": 300,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.27,
+      "top": 1446,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "The city's zoning, layer by layer",
+      "words": 6,
+      "chars": 33,
+      "lines": 2,
+      "size": 36,
+      "vw": 9.2,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 1770,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "0 ha",
+      "words": 2,
+      "chars": 4,
+      "lines": 1,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.19,
+      "top": 2296,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Panabo City, on one map",
+      "words": 5,
+      "chars": 23,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 2381,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Most of it is farmland",
+      "words": 5,
+      "chars": 22,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 2988,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "20,297 ha 76.9% of the city",
+      "words": 6,
+      "chars": 27,
+      "lines": 2,
+      "size": 34,
+      "vw": 8.7,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 3031,
+      "mixedFonts": [
+       "Fraunces",
+       "Geist"
+      ],
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Where people live",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 3579,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "2,877 ha 10.9% of the city",
+      "words": 6,
+      "chars": 26,
+      "lines": 2,
+      "size": 34,
+      "vw": 8.7,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 3622,
+      "mixedFonts": [
+       "Fraunces",
+       "Geist"
+      ],
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Trade, industry and services",
+      "words": 4,
+      "chars": 28,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 4170,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "2,590 ha 9.8% of the city",
+      "words": 6,
+      "chars": 25,
+      "lines": 2,
+      "size": 34,
+      "vw": 8.7,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 4213,
+      "mixedFonts": [
+       "Fraunces",
+       "Geist"
+      ],
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "What stays green",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 4760,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "639 ha 2.4% of the city",
+      "words": 6,
+      "chars": 23,
+      "lines": 2,
+      "size": 34,
+      "vw": 8.7,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 4804,
+      "mixedFonts": [
+       "Fraunces",
+       "Geist"
+      ],
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Every zone, one answer away",
+      "words": 5,
+      "chars": 27,
+      "lines": 2,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 5351,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "How to use TerraSpec in five steps.",
+      "words": 7,
+      "chars": 35,
+      "lines": 2,
+      "size": 36,
+      "vw": 9.2,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 6276,
+      "mixedFonts": [
+       "Fraunces",
+       "Fraunces italic"
+      ],
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "01",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Geist Mono",
+      "weight": 300,
+      "tracking": -0.04,
+      "leading": 1.5,
+      "upper": false,
+      "italic": false,
+      "mono": true,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.23,
+      "top": 6524,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "02",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Geist Mono",
+      "weight": 300,
+      "tracking": -0.04,
+      "leading": 1.5,
+      "upper": false,
+      "italic": false,
+      "mono": true,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.23,
+      "top": 6524,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "03",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Geist Mono",
+      "weight": 300,
+      "tracking": -0.04,
+      "leading": 1.5,
+      "upper": false,
+      "italic": false,
+      "mono": true,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.23,
+      "top": 6524,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "04",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Geist Mono",
+      "weight": 300,
+      "tracking": -0.04,
+      "leading": 1.5,
+      "upper": false,
+      "italic": false,
+      "mono": true,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.22,
+      "top": 6524,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "05",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Geist Mono",
+      "weight": 300,
+      "tracking": -0.04,
+      "leading": 1.5,
+      "upper": false,
+      "italic": false,
+      "mono": true,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.28,
+      "top": 6524,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "A three-tier architecture for spatial decisions.",
+      "words": 6,
+      "chars": 48,
+      "lines": 3,
+      "size": 36,
+      "vw": 9.2,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 7411,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "What the citizen sees.",
+      "words": 4,
+      "chars": 22,
+      "lines": 1,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.5,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.8,
+      "top": 7741,
+      "tag": "h4",
+      "kind": "heading"
+     },
+     {
+      "text": "Where decisions happen.",
+      "words": 3,
+      "chars": 23,
+      "lines": 1,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.5,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.8,
+      "top": 8031,
+      "tag": "h4",
+      "kind": "heading"
+     },
+     {
+      "text": "What the city owns.",
+      "words": 4,
+      "chars": 19,
+      "lines": 1,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.5,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.8,
+      "top": 8382,
+      "tag": "h4",
+      "kind": "heading"
+     },
+     {
+      "text": "Two Sustainable Development Goals, one decision layer.",
+      "words": 7,
+      "chars": 54,
+      "lines": 3,
+      "size": 36,
+      "vw": 9.2,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 8840,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "11",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 96,
+      "vw": 24.6,
+      "font": "Fraunces",
+      "weight": 300,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.15,
+      "top": 9022,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Sustainable Cities & Communities",
+      "words": 4,
+      "chars": 32,
+      "lines": 2,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.75,
+      "top": 9060,
+      "tag": "h4",
+      "kind": "heading"
+     },
+     {
+      "text": "15",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 96,
+      "vw": 24.6,
+      "font": "Fraunces",
+      "weight": 300,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.19,
+      "top": 9338,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Life on Land",
+      "words": 3,
+      "chars": 12,
+      "lines": 1,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Fraunces",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.75,
+      "top": 9376,
+      "tag": "h4",
+      "kind": "heading"
+     },
+     {
+      "text": "Open the system and explore your first barangay.",
+      "words": 8,
+      "chars": 48,
+      "lines": 6,
+      "size": 48,
+      "vw": 12.3,
+      "font": "Fraunces",
+      "weight": 300,
+      "tracking": -0.025,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.49,
+      "top": 9814,
+      "mixedFonts": [
+       "Fraunces",
+       "Fraunces italic"
+      ],
+      "tag": "h3",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 33,
+     "maxLines": 6,
+     "over2Lines": 3,
+     "statements": 4,
+     "centered": 0,
+     "medianWords": 4,
+     "mixedFontHeadings": 6
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Geist",
+       "share": 0.81,
+       "mono": false
+      },
+      {
+       "family": "Fraunces",
+       "share": 0.1,
+       "mono": false
+      },
+      {
+       "family": "Geist Mono",
+       "share": 0.09,
+       "mono": true
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      22,
+      28,
+      30,
+      34,
+      35,
+      36,
+      48,
+      52,
+      96
+     ],
+     "sizeCount": 17,
+     "notLoaded": [],
+     "body": {
+      "font": "Geist",
+      "size": 12.5,
+      "leading": 1.4,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 10
+     },
+     "measureChars": 37,
+     "max": {
+      "size": 96,
+      "vw": 24.6,
+      "font": "Fraunces",
+      "text": "11"
+     },
+     "monoShare": 0.09,
+     "monoProseShare": 0.09,
+     "monoFamilies": [
+      "Geist Mono"
+     ],
+     "monoSamples": [
+      "Barangays mapped",
+      "Suitability criteria",
+      "Native species catalogued",
+      "MCDA methods compared",
+      "— For the public",
+      "01"
+     ],
+     "microLabels": 20,
+     "microLabelShare": 0.062,
+     "microSamples": [
+      "Barangays mapped",
+      "Suitability criteria",
+      "Native species catalogued",
+      "MCDA methods compared",
+      "— For the public",
+      "— Under the hood"
+     ],
+     "upperShare": 0.07,
+     "centerShare": 0.01,
+     "smallText": 24
+    },
+    "eyebrows": [
+     {
+      "text": "— For the public",
+      "above": "How to use TerraSpec in five steps.",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 6246
+     },
+     {
+      "text": "— Under the hood",
+      "above": "A three-tier architecture for spatial de",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 7381
+     },
+     {
+      "text": "TIER 01 · PRESENTATION",
+      "above": "What the citizen sees.",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 10.5,
+      "top": 7717
+     },
+     {
+      "text": "TIER 02 · APPLICATION",
+      "above": "Where decisions happen.",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 10.5,
+      "top": 8008
+     },
+     {
+      "text": "TIER 03 · DATA",
+      "above": "What the city owns.",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 10.5,
+      "top": 8358
+     },
+     {
+      "text": "— Aligned with",
+      "above": "Two Sustainable Development Goals, one d",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 8809
+     },
+     {
+      "text": "SDG 11",
+      "above": "Sustainable Cities & Communities",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 12,
+      "top": 9030
+     },
+     {
+      "text": "→ INCLUSIVE URBAN PLANNING",
+      "above": "15",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 9251
+     },
+     {
+      "text": "SDG 15",
+      "above": "Life on Land",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 12,
+      "top": 9346
+     },
+     {
+      "text": "— Now go decide",
+      "above": "Open the system and explore your first b",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 9784
+     }
+    ],
+    "numbered": [
+     {
+      "text": "01",
+      "size": 22,
+      "top": 6528
+     },
+     {
+      "text": "02",
+      "size": 22,
+      "top": 6528
+     },
+     {
+      "text": "03",
+      "size": 22,
+      "top": 6528
+     },
+     {
+      "text": "04",
+      "size": 22,
+      "top": 6528
+     },
+     {
+      "text": "05",
+      "size": 22,
+      "top": 6528
+     }
+    ],
+    "color": {
+     "bodyBg": "#ffffff",
+     "bodyBgHsl": {
+      "h": 0,
+      "s": 0,
+      "l": 1
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#fbfaf7",
+       "top": 0,
+       "hsl": {
+        "h": 45,
+        "s": 0.33,
+        "l": 0.98
+       }
+      },
+      {
+       "color": "#ffffff",
+       "top": 65,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#eff1f0",
+       "top": 81,
+       "hsl": {
+        "h": 150,
+        "s": 0.07,
+        "l": 0.94
+       }
+      },
+      {
+       "color": "#e2e9e7",
+       "top": 369,
+       "hsl": {
+        "h": 163,
+        "s": 0.14,
+        "l": 0.9
+       }
+      },
+      {
+       "color": "#121216",
+       "top": 1225,
+       "hsl": {
+        "h": 240,
+        "s": 0.1,
+        "l": 0.08
+       }
+      },
+      {
+       "color": "#eaf0ee",
+       "top": 1969,
+       "hsl": {
+        "h": 160,
+        "s": 0.17,
+        "l": 0.93
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#54545f",
+       "share": 0.25
+      },
+      {
+       "color": "#1c1c22",
+       "share": 0.18
+      },
+      {
+       "color": "#121216",
+       "share": 0.14
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.1
+      },
+      {
+       "color": "#484851",
+       "share": 0.07
+      }
+     ],
+     "button": {
+      "bg": "#121216",
+      "hsl": {
+       "h": 240,
+       "s": 0.1,
+       "l": 0.08
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 5,
+     "inHero": 1,
+     "radius": 8,
+     "height": 38,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Launch system"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 1,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "div.lp-stats → rgba(20, 40, 30, 0.35) 0px 30px 60px -30px"
+     ],
+     "gradients": 3,
+     "scrims": 0,
+     "gradientSamples": [
+      "div.sdg-card.sdg-11 → linear-gradient(135deg, rgb(253, 157, 36) 0%, rgb(217, 119, 6) 100%)",
+      "div.sdg-card.sdg-15 → linear-gradient(135deg, rgb(86, 192, 43) 0%, rgb(47, 122, 22) 100%)",
+      "div → radial-gradient(circle at 20% 30%, rgb(57, 198, 156) 0%, rgba(0, 0, 0, 0) 35%), radial-gradient(circle at 80% "
+     ],
+     "gradientText": 0,
+     "hairlines": 19,
+     "hairlineSamples": [
+      "nav.lp-nav 390px",
+      "section#zoning.lp-section.zs 390px",
+      "section#howto.lp-section 390px",
+      "div 133px",
+      "div 134px"
+     ],
+     "outlinedBoxes": 5,
+     "dashed": 8,
+     "blurred": 1,
+     "roundedBoxes": 8,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "svg",
+      "ratio": 0.38
+     }
+    ],
+    "nav": {
+     "links": 0,
+     "fixed": true,
+     "height": 65,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "fraunces",
+     "geist",
+     "geist mono"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 10882,
+    "margins": {
+     "left": 8,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "section.lh",
+      "tag": "section",
+      "top": 65,
+      "height": 1152,
+      "words": 90,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Panabo's zoning, now a live map",
+       "size": 35,
+       "tag": "h1"
+      },
+      "left": 36,
+      "right": 36,
+      "textLeft": 36,
+      "textRight": 44,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.lp-shell",
+      "tag": "section",
+      "top": 1225,
+      "height": 456,
+      "words": 42,
+      "media": 0,
+      "middle": 68,
+      "heading": {
+       "text": "40",
+       "size": 52,
+       "tag": "div"
+      },
+      "left": 56,
+      "right": 60,
+      "textLeft": 56,
+      "textRight": 60,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#zoning.lp-section.zs",
+      "tag": "section",
+      "top": 1681,
+      "height": 4476,
+      "words": 310,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "The city's zoning, layer by layer",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 8,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 16,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#howto.lp-section",
+      "tag": "section",
+      "top": 6157,
+      "height": 1135,
+      "words": 156,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "How to use",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 16,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#arch.lp-section",
+      "tag": "section",
+      "top": 7292,
+      "height": 1428,
+      "words": 140,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "A three-tier architecture for spatial decisions.",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 19,
+      "textLeft": 16,
+      "textRight": 19,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.lp-section",
+      "tag": "section",
+      "top": 8720,
+      "height": 952,
+      "words": 85,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "11",
+       "size": 96,
+       "tag": "span"
+      },
+      "left": 16,
+      "right": 40,
+      "textLeft": 16,
+      "textRight": 40,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.lp-section",
+      "tag": "section",
+      "top": 9672,
+      "height": 557,
+      "words": 17,
+      "media": 0,
+      "middle": 40,
+      "heading": {
+       "text": "Open the system and",
+       "size": 48,
+       "tag": "h3"
+      },
+      "left": 72,
+      "right": 0,
+      "textLeft": 72,
+      "textRight": 16,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.lp-footer",
+      "tag": "footer",
+      "top": 10261,
+      "height": 621,
+      "words": 66,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 16,
+      "right": 17,
+      "textLeft": 16,
+      "textRight": 17,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Panabo's zoning, now a live map",
+      "size": 35,
+      "top": 101,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 16,
+      "n": 8
+     },
+     {
+      "x": 36,
+      "n": 3
+     },
+     {
+      "x": 72,
+      "n": 3
+     },
+     {
+      "x": 48,
+      "n": 2
+     },
+     {
+      "x": 197,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 17,
+    "bodySize": 13,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "dark": false,
+    "ground": "#ffffff",
+    "sidebar": null,
+    "topbar": {
+     "h": 65
+    },
+    "canvas": {
+     "left": 8,
+     "right": -210
+    },
+    "hero": {
+     "text": "Panabo's zoning, now a live map",
+     "words": 6,
+     "chars": 31,
+     "lines": 2,
+     "size": 35,
+     "vw": 9,
+     "font": "Fraunces",
+     "weight": 400,
+     "tracking": -0.03,
+     "leading": 1,
+     "top": 101,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 2,
+    "layout": {
+     "panels": 10,
+     "firstScreen": 1,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 10,
+     "radii": [
+      [
+       16,
+       5
+      ],
+      [
+       0,
+       2
+      ],
+      [
+       12,
+       2
+      ],
+      [
+       20,
+       1
+      ]
+     ],
+     "heavyBorders": 2,
+     "borderSamples": [
+      "#379178 on #fbfaf7 (3.67:1)",
+      "#349378 on #fbfaf7 (3.6:1)"
+     ],
+     "heavyShadows": 1,
+     "softShadows": 0,
+     "shadowSamples": [
+      "rgba(20, 40, 30, 0.35) 0px 30px 60px -30px"
+     ],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 8,
+     "tabularShare": 1,
+     "kpiMax": 96
+    },
+    "rows": null,
+    "chartHues": 9,
+    "placeholders": [],
+    "type": {
+     "under13": 0.09,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      22,
+      28,
+      30,
+      34,
+      35,
+      36,
+      48,
+      52,
+      96
+     ]
+    },
+    "title": {
+     "text": "Panabo's zoning, now a live map",
+     "size": 35,
+     "top": 101
+    },
+    "colourShare": 0.161
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "mixed-font-headline",
+   "width": 1440,
+   "message": "6 headline(s) switch typeface or to italic mid-line (the \"one italic serif word\" move).",
+   "fix": "Set the whole headline in one face. Emphasis comes from the words.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "micro-label",
+   "width": 1440,
+   "message": "20 tiny uppercase letter-spaced labels (e.g. \"Barangays mapped\", \"Suitability criteria\", \"Native species catalogued\", \"MCDA methods compared\").",
+   "fix": "Use sentence-case text at a readable size, or delete the label.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "gradient",
+   "width": 1440,
+   "message": "3 gradient fill(s): div.sdg-card.sdg-11 → linear-gradient(135deg, rgb(253, 157, 36) 0%, rgb(217, 119, 6) 100%) | div.sdg-card.sdg-15 → linear-gradient(135deg, rgb(86, 192, 43) 0%, rgb(47, 122, 22) 100%) | div → radial-gradient(circle at 20% 30%, rgb(57, 198, 156) 0%, rgba(0, 0, 0, 0) 35%), radial-gradient(circle at 80% ",
+   "fix": "Use a flat colour or a real image. The only gradient allowed by default is a neutral scrim over a photo for legibility.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "palette-cream",
+   "width": 1440,
+   "message": "Yellow-cream background (section #fbfaf7).",
+   "fix": "Use the drawn palette. If you want warmth, take a low-chroma stone or bone, not a yellow cream.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "font-count",
+   "width": 1440,
+   "message": "3 typefaces in use (Geist, Fraunces, Geist Mono).",
+   "fix": "Two at most.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "dev-server",
+   "width": 1440,
+   "message": "This page is served by a development server (Vite, webpack or Next in dev mode).",
+   "fix": "Run the last gate on the production build too (vite build && vite preview, next build && next start, or the built index.html): minifiers and bundlers change the CSS a visitor receives.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "font-not-dealt",
+   "width": 1440,
+   "message": "The sheet dealt IBM Plex Sans, but the page renders Geist, Fraunces.",
+   "fix": "Load the dealt face (the link on the sheet) and put it first in font-family. A build that falls back to a default face lands on the default look."
+  },
+  {
+   "level": "FAIL",
+   "id": "heavy-shadow",
+   "width": 1440,
+   "message": "1 panel shadow(s) heavy enough to read as floating: rgba(20, 40, 30, 0.35) 0px 30px 60px -30px",
+   "fix": "Panels sit on the ground: separate them with a fill one step from the ground or a quiet 1px border. A shadow, if any, is under 8% black with a small blur. Real overlays (menus, dialogs, popovers) may float.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "rainbow-chart",
+   "width": 1440,
+   "message": "The charts use 9 different hues.",
+   "fix": "One hue for the series that matters, a neutral for the rest, and at most four series colours in total; status colours only for status.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "below-fold",
+   "width": 1440,
+   "message": "Only 1 of 9 blocks start on the first 1440px screen.",
+   "fix": "Every block the brief names shows its header and first rows on the first desktop screen: size the headline block to its question, cap long lists with \"View all\", and put time-sensitive blocks before long tables."
+  },
+  {
+   "level": "WARN",
+   "id": "panel-void",
+   "width": 1440,
+   "message": "2 card(s) hold a blank band inside: 72px in \"What the citizen sees.\", 51px in \"What the city owns.\".",
+   "fix": "A card stretches to its neighbour only when it has content to fill. Keep a legend or a note directly under its chart (only an action or a total may sit at a stretched card's foot), let a short card keep its own height (align-items: start), and let a filtered block shrink to its rows."
+  },
+  {
+   "level": "WARN",
+   "id": "app-title-size",
+   "width": 1440,
+   "message": "The h1 is 60px (\"Panabo's zoning, now a live map\").",
+   "fix": "An app screen is not a landing page: the title is 18-32px (20-24px on a phone).",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "kpi-size",
+   "width": 1440,
+   "message": "A figure is set at 96px.",
+   "fix": "Figures run 16-40px on app screens; none of the studied screens reaches 48px. Size and isolation make a number loud, not display type.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 390,
+   "message": "3 headline(s) wrap past two lines at 390px: \"A three-tier architecture for spatial decisions.\" → 3 lines (6 words, 36px); \"Two Sustainable Development Goals, one decision \" → 3 lines (7 words, 36px); \"Open the system and explore your first barangay.\" → 6 lines (8 words, 48px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 24px or less."
+  },
+  {
+   "level": "WARN",
+   "id": "colour-sprawl",
+   "width": 390,
+   "message": "16% of the first screen is strongly coloured.",
+   "fix": "Keep the screen neutral and spend colour on data and status: the studied screens sit near 3%, and only tinted styles reach 10–15%, as pale tints rather than saturated fills."
+  },
+  {
+   "level": "FAIL",
+   "id": "covered-text",
+   "width": 390,
+   "message": "Large text lies under another element at some scroll position: \"Most of it is farmland\" (screen 4, 50% hidden); \"Where people live\" (screen 5, 100% hidden); \"2,877 ha 10.9% of the city\" (screen 5, 100% hidden); \"Every zone, one answer away\" (screen 7, 100% hidden)",
+   "fix": "Nothing may sit on top of a headline or statement. Move the picture, shorten the pinned run, or raise the text above it (z-index) and give it a ground."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "D:\\TerraSpec\\.taste-skill\\after-hero\\desktop-fold.jpg",
+   "pages": [
+    "D:\\TerraSpec\\.taste-skill\\after-hero\\desktop-page-01.jpg",
+    "D:\\TerraSpec\\.taste-skill\\after-hero\\desktop-page-02.jpg",
+    "D:\\TerraSpec\\.taste-skill\\after-hero\\desktop-page-03.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "D:\\TerraSpec\\.taste-skill\\after-hero\\mobile-fold.jpg",
+   "pages": [
+    "D:\\TerraSpec\\.taste-skill\\after-hero\\mobile-page-01.jpg",
+    "D:\\TerraSpec\\.taste-skill\\after-hero\\mobile-page-02.jpg"
+   ],
+   "film": []
+  }
+ ]
+}
