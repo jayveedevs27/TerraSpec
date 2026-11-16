@@ -332,6 +332,7 @@ export function AdminScreen({ staffRole }) {
   const [draft, setDraft]   = useState({});
   const [saving, setSaving] = useState(false);
   const [saveErr, setSaveErr] = useState('');
+  const [pendingDelete, setPendingDelete] = useState(null); // { record, name, deleting, err }
 
   // Criteria-specific
   const [weights, setWeights]       = useState({}); // { [criteria_id]: { commercial, residential, ... } }
@@ -406,13 +407,27 @@ export function AdminScreen({ staffRole }) {
     finally { setSaving(false); }
   }
 
-  async function handleDelete(record) {
+  function handleDelete(record) {
+    setPendingDelete({ record, name: TAB_CONFIG[tab].display(record)[0], deleting: false, err: '' });
+  }
+
+  const isDeleteDialogOpen = pendingDelete !== null;
+  const isDeleting = pendingDelete?.deleting ?? false;
+  useEffect(() => {
+    if (!isDeleteDialogOpen || isDeleting) return;
+    const closeOnEscape = e => { if (e.key === 'Escape') setPendingDelete(null); };
+    document.addEventListener('keydown', closeOnEscape);
+    return () => document.removeEventListener('keydown', closeOnEscape);
+  }, [isDeleteDialogOpen, isDeleting]);
+
+  async function confirmDelete() {
     const cfg = TAB_CONFIG[tab];
-    if (!window.confirm('Delete this record?')) return;
+    setPendingDelete(p => ({ ...p, deleting: true, err: '' }));
     try {
-      await apiFetch('DELETE', `/${tab}/${record[cfg.pk]}`);
+      await apiFetch('DELETE', `/${tab}/${pendingDelete.record[cfg.pk]}`);
+      setPendingDelete(null);
       load(tab);
-    } catch (e) { alert(e.message); }
+    } catch (e) { setPendingDelete(p => ({ ...p, deleting: false, err: e.message })); }
   }
 
   // ── CRITERIA WEIGHTS ────────────────────────────────────────────
@@ -479,7 +494,7 @@ export function AdminScreen({ staffRole }) {
               // The previous tab's rows must not reach the new tab's view while its own rows load
               // (barangay rows given to the AHP matrix crashed the whole screen)
               if (t !== tab) { setRows([]); setLoading(true); }
-              setTab(t); setModal(null);
+              setTab(t); setModal(null); setPendingDelete(null);
             }}
           >
             {t === 'ahp' ? 'AHP Matrix' : t === 'criteria' ? 'AHP Weights' : t}
@@ -724,6 +739,37 @@ export function AdminScreen({ staffRole }) {
               <Btn variant="outline" onClick={() => setModal(null)}>Cancel</Btn>
               <Btn variant="brand" disabled={saving} onClick={handleSave}>
                 {saving ? 'Saving…' : 'Save'}
+              </Btn>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── DELETE CONFIRMATION ── */}
+      {pendingDelete && (
+        <div
+          style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.45)', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}
+          onClick={e => { if (e.target === e.currentTarget && !pendingDelete.deleting) setPendingDelete(null); }}
+        >
+          <div role="alertdialog" aria-modal="true" aria-labelledby="delete-title" style={{ background: 'hsl(var(--card))', borderRadius: 12, width: '100%', maxWidth: 400, boxShadow: '0 20px 60px rgba(0,0,0,0.25)', padding: 20, display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+              <div style={{ flexShrink: 0, width: 36, height: 36, borderRadius: '50%', background: 'hsl(var(--destructive)/0.12)', color: 'hsl(var(--destructive))', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Icon name="trash" size={16}/>
+              </div>
+              <div>
+                <div id="delete-title" style={{ fontWeight: 600, fontSize: 14 }}>Delete {tab.replace(/s$/, '')}?</div>
+                <div className="muted" style={{ fontSize: 13, marginTop: 4 }}>
+                  <strong style={{ color: 'hsl(var(--foreground))' }}>{pendingDelete.name}</strong> will be permanently deleted. This cannot be undone.
+                </div>
+              </div>
+            </div>
+            {pendingDelete.err && (
+              <div style={{ fontSize: 12.5, color: 'hsl(var(--destructive))', padding: '8px 10px', borderRadius: 6, background: 'hsl(var(--destructive)/0.08)' }}>{pendingDelete.err}</div>
+            )}
+            <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end', marginTop: 4 }}>
+              <Btn variant="outline" disabled={pendingDelete.deleting} onClick={() => setPendingDelete(null)}>Cancel</Btn>
+              <Btn variant="destructive" disabled={pendingDelete.deleting} onClick={confirmDelete}>
+                {pendingDelete.deleting ? 'Deleting…' : 'Delete'}
               </Btn>
             </div>
           </div>

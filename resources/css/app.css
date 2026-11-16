@@ -132,6 +132,8 @@ input, select, textarea { font-family: inherit; font-size: inherit; color: inher
 .btn-ghost:hover { background: hsl(var(--accent)); }
 .btn-brand     { background: hsl(var(--brand));     color: hsl(var(--brand-foreground)); }
 .btn-brand:hover { background: hsl(var(--brand) / 0.92); }
+.btn-destructive { background: hsl(var(--destructive)); color: hsl(var(--destructive-foreground)); }
+.btn-destructive:hover { background: hsl(var(--destructive) / 0.9); }
 .btn-sm  { height: 30px; padding: 0 10px; font-size: 12px; border-radius: 7px; }
 .btn-xs  { height: 26px; padding: 0 8px;  font-size: 12px; border-radius: 6px; }
 .btn-icon { width: 36px; padding: 0; }
