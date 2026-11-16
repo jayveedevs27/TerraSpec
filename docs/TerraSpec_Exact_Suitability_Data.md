@@ -1,6 +1,8 @@
 # TerraSpec — Complete Exact Data for Suitability Scoring
 **Source: CLUP Panabo City CY 2020–2029, Vol. 1**
-**All values transcribed directly from scanned tables.**
+
+**Data tables (Tables 1–13) are transcribed directly from the scanned CLUP tables, with their table and page numbers.** Formulas and scores marked **TerraSpec scoring rule** are not in the CLUP: they are the rules TerraSpec applies to the CLUP data (see `app/Services/SuitabilityScoreService.php`).
+
 `-` = no data / not applicable for that barangay
 
 ---
@@ -8,7 +10,7 @@
 ## TABLE 1: Zone Unit Base Data
 *Source: Table DE-4, DE-5 — CLUP p.15–17*
 
-| # | Barangay | Class | Area (has) | Pop 2020 | Households | Density (p/ha) | Avg HH Size |
+| # | Barangay | Class | Area (has) | Pop 2020 | Households | Density (persons/km²) | Avg HH Size |
 |---|---|---|---|---|---|---|---|
 | 1 | Santo Nino | Urban | 98 | 5,156 | 1,289 | 5,261 | 4 |
 | 2 | Cagangohan | Urban | 412 | 13,224 | 2,645 | 3,210 | 5 |
@@ -151,8 +153,12 @@
 | Upper Licanan | - | 21.30 | 80.13 | 293.94 | 395.36 |
 | Waterfall | 1.88 | 1.42 | 49.85 | 382.61 | 435.77 |
 
-**Derived flood_risk_score formula (normalize 0–1):**
-`flood_score = (High × 1.0 + Moderate × 0.5 + Low × 0.2) / total_area_ha`
+*"Dalisay" in the CLUP table is Barangay New Malaga in TerraSpec.*
+
+**TerraSpec scoring rule — flood score (0–1, higher = safer):**
+`flood_raw = (High × 1.0 + Moderate × 0.5 + Low × 0.2) / (High + Moderate + Low + None)`
+`flood_score = 1 − flood_raw`
+*(The barangay total of the table is used, as each CLUP hazard table reports its own total; the barangay area is used only when the table has no area recorded. Liquefaction uses the same rule with HSA, MSA and LSA.)*
 
 ---
 
@@ -293,12 +299,12 @@ Most barangays are either Cabangan Clay Loam or Matina Clay Loam dominant.
 | 30–50% | Hilly to mountainous | 252.21 | AO Floirendo, Buenavista, Dalisay, Kiotoy, Lower Panaga, Mabunao, Malativas, San Nicolas, Sindaton |
 | >50% | Strongly hilly to mountainous | 10.47 | Katualan, Sta. Cruz |
 
-**Slope suitability score for development:**
+**TerraSpec scoring rule — slope suitability score for development** (by each barangay's dominant slope class; the values used by the system):
 | Slope | Score |
 |---|---|
 | 0–8% | 1.00 |
-| 8–18% | 0.60 |
-| 18–30% | 0.30 |
+| 8–18% | 0.80 |
+| 18–30% | 0.50 |
 | 30–50% | 0.10 |
 | >50% | 0.00 |
 
@@ -368,7 +374,7 @@ Most barangays are either Cabangan Clay Loam or Matina Clay Loam dominant.
 ---
 
 ## TABLE 10: Settlement Tier / Commercial Saturation Index
-*Source: Section 2.04.01 — CLUP p.140–141*
+*Source of the tiers: Section 2.04.01 — CLUP p.140–141. The saturation_index values are a **TerraSpec scoring rule** (the CLUP lists the tiers only); TerraSpec's market saturation score = 1 − saturation_index.*
 
 | Tier | Barangays | saturation_index |
 |---|---|---|
@@ -406,6 +412,7 @@ Most barangays are either Cabangan Clay Loam or Matina Clay Loam dominant.
 ## TABLE 12: Land Use Requirements by Barangay CY 2029
 *Source: Table LW-5 — CLUP p.147*
 *(All values in hectares)*
+*Note: the Land Area column is copied exactly as printed in CLUP Table LW-5, but for most barangays it does not match the barangay areas in Table 1 (for example J.P. Laurel 109 ha here, 609 ha in Table 1). The column appears misaligned in the CLUP itself. TerraSpec uses the Table 1 areas.*
 
 | Barangay | Land Area | Residential | Commercial | Industrial 1 | Industrial 2 | Industrial 3 | Agri-Ind. | Institutional |
 |---|---|---|---|---|---|---|---|---|
@@ -467,44 +474,59 @@ Most barangays are either Cabangan Clay Loam or Matina Clay Loam dominant.
 
 ## SUMMARY: Derived Suitability Score Values Per Barangay
 
-These are ready-to-insert normalized scores (0.00–1.00) calculated from the tables above.
+These scores are calculated by TerraSpec from the tables above, using the TerraSpec scoring rules (values as computed by the system, `app/Services/SuitabilityScoreService.php`). All scores are 0.00–1.00, where **1.00 = most suitable**.
 
-### Flood Risk Score = (High×1.0 + Moderate×0.5 + Low×0.2) / Total Area
-*(Higher score = more dangerous = lower suitability for development)*
+### Flood Score
+*flood_raw = (High×1.0 + Moderate×0.5 + Low×0.2) / table total (Table 3); flood_score = 1 − flood_raw. Higher flood_raw = more flood exposure; higher flood_score = safer.*
 
-| Barangay | Flood Score | Interpretation |
-|---|---|---|
-| Cagangohan | 0.56 | High risk (141ha high flood) |
-| J.P. Laurel | 0.43 | High risk (185ha high flood) |
-| Dapco | 0.50 | High risk (405ha high flood) |
-| San Pedro | 0.74 | Very high risk (193ha high flood) |
-| Sindaton | 0.24 | Moderate risk |
-| Lower Panaga | 0.28 | Moderate risk |
-| Sto. Nino | 0.53 | High risk (51ha high flood) |
-| New Pandan | 0.40 | Moderate-high |
-| San Vicente | 0.43 | Moderate-high |
-| Kasilak | 0.16 | Moderate |
-| Manay | 0.12 | Low-moderate |
-| Little Panay | 0.15 | Low-moderate |
-| Mabunao | 0.001 | Very low (mostly None) |
-| Katualan | 0.00 | None |
-| Kauswagan | 0.0001 | Essentially none |
-| A.O. Floirendo | 0.003 | Very low |
-| Buenavista | 0.007 | Very low |
-| Cacao | 0.003 | Very low |
-| Waterfall | 0.007 | Very low |
-| Santa Cruz | 0.002 | Very low |
-| Malativas | 0.003 | Very low |
-| San Roque | 0.00 | None |
+| Barangay | High flood (ha) | flood_raw | Flood score (used) | Interpretation |
+|---|---|---|---|---|
+| San Pedro | 193.27 | 0.789 | 0.2107 | Very high flood exposure |
+| Santo Nino | 51.08 | 0.690 | 0.3104 | Very high flood exposure |
+| Cagangohan | 141.08 | 0.556 | 0.4444 | High flood exposure |
+| J.P. Laurel | 185.56 | 0.526 | 0.4736 | High flood exposure |
+| San Vicente | 37.85 | 0.516 | 0.4837 | High flood exposure |
+| New Pandan | 55.36 | 0.512 | 0.4878 | High flood exposure |
+| Dapco | 405.08 | 0.498 | 0.5022 | High flood exposure |
+| Salvacion | - | 0.341 | 0.6590 | Moderate flood exposure |
+| San Francisco | 8.84 | 0.297 | 0.7028 | Moderate flood exposure |
+| Sindaton | 169.11 | 0.282 | 0.7181 | Moderate flood exposure |
+| Lower Panaga | 135.11 | 0.281 | 0.7187 | Moderate flood exposure |
+| Little Panay | - | 0.280 | 0.7196 | Moderate flood exposure |
+| Gredu | - | 0.253 | 0.7467 | Moderate flood exposure |
+| Datu Abdul Dadia | - | 0.229 | 0.7706 | Moderate flood exposure |
+| New Visayas | - | 0.216 | 0.7837 | Moderate flood exposure |
+| Southern Davao | - | 0.206 | 0.7938 | Moderate flood exposure |
+| Nanyo | - | 0.191 | 0.8090 | Low flood exposure |
+| Kasilak | 74.36 | 0.138 | 0.8619 | Low flood exposure |
+| Manay | 120.45 | 0.130 | 0.8701 | Low flood exposure |
+| Quezon | - | 0.123 | 0.8774 | Low flood exposure |
+| New Malitbog | - | 0.117 | 0.8826 | Low flood exposure |
+| A.O. Floirendo | - | 0.102 | 0.8985 | Low flood exposure |
+| New Malaga | 46.49 | 0.102 | 0.8983 | Low flood exposure |
+| Katipunan | - | 0.087 | 0.9135 | Low flood exposure |
+| Tagpore | - | 0.074 | 0.9262 | Low flood exposure |
+| Tibungol | 35.41 | 0.069 | 0.9314 | Low flood exposure |
+| Upper Licanan | - | 0.067 | 0.9325 | Low flood exposure |
+| Maduao | - | 0.058 | 0.9423 | Low flood exposure |
+| Waterfall | 1.88 | 0.029 | 0.9712 | Very low or no flood exposure |
+| Kiotoy | 12.75 | 0.020 | 0.9802 | Very low or no flood exposure |
+| Santa Cruz | - | 0.012 | 0.9877 | Very low or no flood exposure |
+| Buenavista | - | 0.010 | 0.9896 | Very low or no flood exposure |
+| San Nicolas | - | 0.007 | 0.9932 | Very low or no flood exposure |
+| Malativas | - | 0.006 | 0.9942 | Very low or no flood exposure |
+| Cacao | - | 0.003 | 0.9966 | Very low or no flood exposure |
+| Consolacion | 0.09 | 0.001 | 0.9993 | Very low or no flood exposure |
+| Mabunao | - | 0.001 | 0.9991 | Very low or no flood exposure |
+| Katualan | - | 0.000 | 1.0000 | Very low or no flood exposure |
+| Kauswagan | - | 0.000 | 0.9998 | Very low or no flood exposure |
+| San Roque | - | 0.000 | 1.0000 | Very low or no flood exposure |
 
 ### Slope Score (development suitability)
-*(All barangays with 0–8% dominant slope score 1.0)*
+*By each barangay's dominant slope class (Table 7 scoring rule: 0–8% = 1.00, 8–18% = 0.80, 18–30% = 0.50, 30–50% = 0.10, >50% = 0.00).*
 
-| Barangay | Dominant Slope | Slope Score |
+| Dominant slope | Slope score | Barangays |
 |---|---|---|
-| Katualan | >50% portions | 0.10 |
-| Sta. Cruz | >50% portions | 0.10 |
-| Mabunao | 18–30% portions | 0.50 |
-| Buenavista | 18–30% portions | 0.50 |
-| All CBD barangays | 0–8% | 1.00 |
-| All lowland rural | 0–8% | 1.00 |
+| 0–8% | 1.00 | A.O. Floirendo, Cacao, Cagangohan, Consolacion, Dapco, Datu Abdul Dadia, Gredu, J.P. Laurel, Kasilak, Katipunan, Kauswagan, Kiotoy, Little Panay, Lower Panaga, Maduao, Malativas, Manay, Nanyo, New Malaga, New Malitbog, New Pandan, New Visayas, Quezon, Salvacion, San Francisco, San Nicolas, San Pedro, San Roque, San Vicente, Santo Nino, Sindaton, Southern Davao, Tagpore, Tibungol, Waterfall |
+| 18–30% | 0.50 | Buenavista, Mabunao, Upper Licanan |
+| 30–50% | 0.10 | Katualan, Santa Cruz |
